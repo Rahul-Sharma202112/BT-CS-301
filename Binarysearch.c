@@ -1,0 +1,36 @@
+//Binary search using Recursive Function
+#include <stdio.h>
+
+int binaryScr(int a[], int low, int high, int m)
+{
+    if (high >= low)
+    {
+        int mid = low + (high - low) / 2;
+        if (a[mid] == m)
+            return mid;
+        if (a[mid] > m)
+            return binaryScr(a, low, mid - 1, m);
+        return binaryScr(a, mid + 1, high, m);
+    }
+    return -1;
+}
+int main(void)
+{
+    int a[] = {22, 33, 41, 56, 60};
+    int i, m;
+    for (i = 0; i < 5; i++)
+    {
+        printf(" %d", a[i]);
+    }
+    printf("/n");
+    int n = sizeof(a) / sizeof(a[0]);
+    printf("Enter the number to be searched:");
+    scanf("%d", &m);
+    int result = binaryScr(a, 0, n - 1, m);
+    (result == -1) ? 
+    printf("The element is not present in array"):
+
+    printf("The element is present at index %d",result);
+                            
+    return 0;
+}
